@@ -2,14 +2,14 @@
 # frozen_string_literal: true
 
 # Canonical Homebrew formula for hiveguard.
-# The CI workflow (.github/workflows/bump-tap.yml) fills https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.1.tar.gz/b702b4d26419365c496dd227ddde3c9ad994a9d909f6d0e0083d7c36e161d50e from
+# The CI workflow (.github/workflows/bump-tap.yml) fills the url and sha256 from
 # the pushed tag and publishes the result to the tap repo (maximhoffman/
 # homebrew-hiveguard) as Formula/hiveguard.rb. Do not edit url/sha256 by hand.
 class Hiveguard < Formula
   desc "Supply-chain safety for local dev on macOS — OSV scans + install-time gating"
   homepage "https://github.com/maximhoffman/hiveguard"
-  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "b702b4d26419365c496dd227ddde3c9ad994a9d909f6d0e0083d7c36e161d50e"
+  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "1871c367043b9b48e6325272713a6142e37cbf01841caa4cdbcfe3b684ce7047"
   license "MIT"
 
   depends_on "jq"
@@ -43,9 +43,11 @@ class Hiveguard < Formula
       Catch-up: if your Mac is asleep or off at the scheduled time, the scan runs
       at the next wake or startup instead.
 
-      Before `brew uninstall hiveguard`, run `hiveguard schedule off` — the
-      launchd agent is not managed by brew services and would otherwise survive.
-      `hiveguard doctor` flags this (and other install issues).
+      Before `brew uninstall hiveguard`, run `hiveguard schedule off` and
+      `hiveguard mark clear` — the launchd agent is not managed by brew services,
+      and the Finder tags/state hiveguard placed on flagged folders would
+      otherwise survive too. `hiveguard doctor` flags this (and other install
+      issues).
 
       Migrating from the git install? Run:
         hiveguard doctor --fix
@@ -59,6 +61,9 @@ class Hiveguard < Formula
       Install-time gating (bumblebee) is a separate upstream tool. To enable the
       shell guard, add to ~/.zshrc:
         source "#{opt_libexec}/bin/bumblebee-guard.sh"
+
+      Want a terminal reminder when you cd into a project hiveguard flagged?
+      Add the line `hiveguard mark hook` prints to ~/.zshrc the same way.
     EOS
   end
 

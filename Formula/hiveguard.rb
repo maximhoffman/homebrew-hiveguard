@@ -2,14 +2,14 @@
 # frozen_string_literal: true
 
 # Canonical Homebrew formula for hiveguard.
-# The CI workflow (.github/workflows/bump-tap.yml) fills https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.0.tar.gz/ad368074a075ca4f1be908689c47391b8870aed11eaccd61f4d04ce27cb4cd55 from
+# The CI workflow (.github/workflows/bump-tap.yml) fills https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.1.tar.gz/b702b4d26419365c496dd227ddde3c9ad994a9d909f6d0e0083d7c36e161d50e from
 # the pushed tag and publishes the result to the tap repo (maximhoffman/
 # homebrew-hiveguard) as Formula/hiveguard.rb. Do not edit url/sha256 by hand.
 class Hiveguard < Formula
   desc "Supply-chain safety for local dev on macOS — OSV scans + install-time gating"
   homepage "https://github.com/maximhoffman/hiveguard"
-  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "ad368074a075ca4f1be908689c47391b8870aed11eaccd61f4d04ce27cb4cd55"
+  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "b702b4d26419365c496dd227ddde3c9ad994a9d909f6d0e0083d7c36e161d50e"
   license "MIT"
 
   depends_on "jq"
@@ -37,8 +37,8 @@ class Hiveguard < Formula
   def caveats
     <<~EOS
       The daily scan is NOT scheduled automatically. Turn it on — you choose the
-      time and the folders (with no folders it scans your home folder):
-        hiveguard schedule on --hour 10
+      time and name the folders to scan (there is no whole-home default):
+        hiveguard schedule on --hour 10 ~/Projects
 
       Catch-up: if your Mac is asleep or off at the scheduled time, the scan runs
       at the next wake or startup instead.

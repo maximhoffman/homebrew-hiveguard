@@ -8,8 +8,8 @@
 class Hiveguard < Formula
   desc "Supply-chain safety for local dev on macOS — OSV scans + install-time gating"
   homepage "https://github.com/maximhoffman/hiveguard"
-  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.4.1.tar.gz"
-  sha256 "b0d386eed0ce0aef9847ad595ee60b9161ef8ae0db290a4baf5c176e7e91bb2d"
+  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.5.0.tar.gz"
+  sha256 "fbdd48dd2057e7699e834752e6f480ca3f0705ee405998924772ab802e8cb71d"
   license "MIT"
 
   depends_on "jq"
@@ -64,6 +64,13 @@ class Hiveguard < Formula
 
       Want a terminal reminder when you cd into a project hiveguard flagged?
       Add the line `hiveguard mark hook` prints to ~/.zshrc the same way.
+
+      Strict mode (off by default) makes a project the daily scan flagged red refuse
+      to run/build/install until you fix it or pause it for a while:
+        hiveguard strict on            # needs the terminal hook line above in ~/.zshrc
+        hiveguard strict pause --for 2h
+      It is a terminal-level guard: it cannot stop an IDE Run button, a double-click,
+      Docker Desktop, or a process that is already running.
     EOS
   end
 

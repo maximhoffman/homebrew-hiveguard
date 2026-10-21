@@ -8,8 +8,8 @@
 class Hiveguard < Formula
   desc "Supply-chain safety for local dev on macOS — OSV scans + install-time gating"
   homepage "https://github.com/maximhoffman/hiveguard"
-  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.8.2.tar.gz"
-  sha256 "f15cd94319181223ff68fb5408cf0070faa6183cc3ffcadd87e55559ffe1efad"
+  url "https://github.com/maximhoffman/hiveguard/archive/refs/tags/v1.8.3.tar.gz"
+  sha256 "7a54cdeca9793b7b844e20e2396d37018390feafeed24b74a9772642eb2f8edf"
   license "MIT"
 
   depends_on "jq"
